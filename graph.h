@@ -16,6 +16,7 @@ File: graph.h
 
 using std::string;
 using std::vector;
+using std::pair;
 using std::cout;
 using std::endl;
 
@@ -25,13 +26,13 @@ public:
     Graph();
 
     bool addVertex(int, string*);
-    bool vertexExists(int);
+    bool addEdge(int, pair<int,int>);
     void printGraph();
     vector<Vertex> vertexList;
 
 private:
-
-
+    bool vertexExists(int);
+    bool edgeExists(int, int);
 };
 
 #endif /* GRAPH_GRAPH_H */
