@@ -10,8 +10,13 @@ File: edge.h
 #ifndef GRAPH_EDGE_H
 #define GRAPH_EDGE_H
 
+#include <string>
+
+using std::string;
+
 struct Edge {
     int destinationVertexID;
+    string destinationVertexName;
     int weight;
 };
 
