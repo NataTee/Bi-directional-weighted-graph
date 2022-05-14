@@ -28,11 +28,11 @@ public:
     bool addVertex(int, string*);
     bool addEdge(int, pair<int,int>);
     void printGraph();
+    bool edgeExists(int, int);
     vector<Vertex> vertexList;
 
 private:
     bool vertexExists(int);
-    bool edgeExists(int, int);
 };
 
 #endif /* GRAPH_GRAPH_H */
