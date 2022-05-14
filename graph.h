@@ -29,6 +29,7 @@ public:
     bool addEdge(int, pair<int,int>);
     void printGraph();
     bool edgeExists(int, int);
+    bool deleteEdge(int, int);
     vector<Vertex> vertexList;
 
 private:
