@@ -16,8 +16,8 @@ File: main.h
 #include <string>   // string
 #include "graph.h"
 
-#define TESTDATA1 5
- 
+#define TESTDATA1 8
+
 using std::cout;
 using std::endl;
 using std::string;
