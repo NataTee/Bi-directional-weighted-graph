@@ -82,6 +82,12 @@ bool Graph::deleteEdge(int from, int to) {
                 deleted = true;
             }
         }
+        for (auto i = vertexList.at(to).edgeList.begin(); i < vertexList.at(to).edgeList.end(); i++) {
+           if (i->destinationVertexID == from) {
+                vertexList.at(to).edgeList.erase(i);
+                deleted = true;
+           }
+        }
     }
     return deleted;
 }
