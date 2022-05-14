@@ -92,8 +92,20 @@ bool Graph::deleteEdge(int from, int to) {
     return deleted;
 }
 
+bool Graph::deleteVertex(int from) {
+    bool deleted = false;
+    if (vertexExists(from)) {
+        for (int i = 0; i < vertexList.size(); i++) {
+            deleteEdge(from, i);
+        }
+        vertexList.erase(vertexList.begin() + from);
+        deleted = true;
+    }
+    return deleted;
+}
+
 void Graph::printGraph() {
-    if (vertexList.size() == 0) {
+    if (vertexList.empty()) {
         cout << "The graph is empty." << endl;
     }
     else {
