@@ -69,11 +69,11 @@ int main(int argc, char** argv) {
         }
      }
 
-     cout << "\nChecing the Graph" << endl;
+     cout << "\nChecking the Graph" << endl;
      cout << "==============================================" << endl;
      graph.printGraph();
 
-     cout << "\nChecking if vertices are neighbours" << endl;
+     cout << "\nChecking if random vertices are neighbours" << endl;
      cout << "==============================================" << endl;
      for (int i = 0; i < TESTDATA1/2; i++) {
         int vert1 = rand()%TESTDATA1;
@@ -104,10 +104,24 @@ int main(int argc, char** argv) {
         }
      }
 
-     cout << "\nChecing the Graph" << endl;
+     cout << "\nChecking the Graph" << endl;
      cout << "==============================================" << endl;
      graph.printGraph();
 
+     cout << "\nDeleting random vertex" << endl;
+     cout << "==============================================" << endl;
+     int delVert = rand()%TESTDATA1;
+     cout << "Deleting the vertex " << delVert << "... ";
+     if (graph.deleteVertex(delVert)) {
+         cout << "vertex and all its edges deleted." << endl;
+     }
+     else {
+         cout << "NOT deleted." << endl;
+     }
+
+     cout << "\nChecking the Graph" << endl;
+     cout << "==============================================" << endl;
+     graph.printGraph();
 
      cout << endl;
      return 0;
