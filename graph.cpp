@@ -73,9 +73,22 @@ bool Graph::edgeExists(int from, int to) {
     return found;
 }
 
+bool Graph::deleteEdge(int from, int to) {
+    bool deleted = false;
+    if (edgeExists(from, to)) {
+        for (auto i = vertexList.at(from).edgeList.begin(); i < vertexList.at(from).edgeList.end(); i++) {
+            if (i->destinationVertexID == to) {
+                vertexList.at(from).edgeList.erase(i);
+                deleted = true;
+            }
+        }
+    }
+    return deleted;
+}
+
 void Graph::printGraph() {
     if (vertexList.size() == 0) {
-        cout << "The graph is empty" << endl;
+        cout << "The graph is empty." << endl;
     }
     else {
         for (int i = 0; i < vertexList.size(); i++) {
