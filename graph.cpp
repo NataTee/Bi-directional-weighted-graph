@@ -29,23 +29,23 @@ bool Graph::addEdge(int from, pair<int,int> edge) {
     bool added = false;
     int to = edge.first;
     int weight = edge.second;
-    if (vertexExists(from) && vertexExists(to)) {
-        if (!edgeExists(from, to)) {
-            for (int i = 0; i < vertexList.size(); i++) {
-                if (vertexList.at(i).id == from) {
-                    Edge temp;
-                    temp.destinationVertexID = to;
-                    temp.weight = weight;
-                    vertexList.at(i).edgeList.push_back(temp);
-                    added = true;
-                }
-                else if (vertexList.at(i).id == to) {
-                    Edge temp;
-                    temp.destinationVertexID = from;
-                    temp.weight = weight;
-                    vertexList.at(i).edgeList.push_back(temp);
-                    added = true;
-                }
+    if (vertexExists(from) && vertexExists(to) && !edgeExists(from, to)) {
+        for (int i = 0; i < vertexList.size(); i++) {
+            if (vertexList.at(i).id == from) {
+                Edge temp;
+                temp.destinationVertexID = to;
+                temp.destinationVertexName = vertexList.at(to).city;
+                temp.weight = weight;
+                vertexList.at(i).edgeList.push_back(temp);
+                added = true;
+            }
+            else if (vertexList.at(i).id == to) {
+                Edge temp;
+                temp.destinationVertexID = from;
+                temp.destinationVertexName = vertexList.at(from).city;
+                temp.weight = weight;
+                vertexList.at(i).edgeList.push_back(temp);
+                added = true;
             }
         }
     }
@@ -64,7 +64,7 @@ bool Graph::vertexExists(int id) {
 
 bool Graph::edgeExists(int from, int to) {
     bool found = false;
-    Vertex temp = vertexList[from-1];
+    Vertex temp = vertexList[from];
     for (auto i = temp.edgeList.begin(); i < temp.edgeList.end(); i++) {
         if (i->destinationVertexID == to) {
             found = true;
@@ -79,11 +79,12 @@ void Graph::printGraph() {
     }
     else {
         for (int i = 0; i < vertexList.size(); i++) {
-            cout << vertexList[i].id << ": " << vertexList[i].city << endl;
+            cout << vertexList[i].id << ": " << vertexList[i].city;
             for (int j = 0; j < vertexList[i].edgeList.size(); j++) {
-                cout << " --> " << vertexList[i].edgeList[i].destinationVertexID <<
-                ": " << vertexList[i].edgeList[i].weight;
+                cout << " --> " << vertexList[i].edgeList[j].destinationVertexName
+                <<  ": " << vertexList[i].edgeList[j].weight;
             }
+            cout << endl;
         }
     }
     return;
