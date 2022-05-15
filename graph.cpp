@@ -142,7 +142,35 @@ void Graph::depthFirst(int vert, bool visited[]) {
 }
 
 void Graph::breadthFirst(int fVert) {
+    bool *visited = new bool[MAXVECTSIZE-1];
+    for (int i = 0; i < (MAXVECTSIZE-1); i++) {
+        visited[i] = false;
+    }
+    breadthFirst(fVert, visited);
+    return;
+}
 
+void Graph::breadthFirst(int vert, bool visited[]) {
+    visited[vert] = true;
+    list<int> queue;
+    queue.push_back(vert);
+
+    while(!queue.empty()) {
+       // Dequeue a vertex from queue and print it
+       vert = queue.front();
+       cout << vert << " ";
+       queue.pop_front();
+
+       // Get all adjacent vertices of the dequeued
+       // vertex s. If a adjacent has not been visited,
+       // then mark it visited and enqueue it
+       for (auto i = vertexList.at(vert).edgeList.begin(); i != vertexList.at(vert).edgeList.end(); i++) {
+           if (visited[i->destinationVertexID] != true) {
+             visited[i->destinationVertexID] = true;
+             queue.push_back(i->destinationVertexID);
+           }
+       }
+    }
     return;
 }
 
