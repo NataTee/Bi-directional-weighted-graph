@@ -93,7 +93,7 @@ int main(int argc, char** argv) {
 
      cout << "\nBreadth-First Traversal" << endl;
      cout << "==============================================" << endl;
-     graph.breadthFirst();
+     graph.breadthFirst(fVert);
      cout << endl;
 
 
@@ -151,7 +151,7 @@ int main(int argc, char** argv) {
 
      cout << "\nBreadth-First Traversal" << endl;
      cout << "==============================================" << endl;
-     graph.breadthFirst();
+     graph.breadthFirst(fVert);
      cout << endl;
 
 
