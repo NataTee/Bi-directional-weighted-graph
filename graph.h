@@ -14,8 +14,11 @@ File: graph.h
 #include <string>
 #include <vector>
 
+#define MAXVECTSIZE 12
+
 using std::string;
 using std::vector;
+using std::distance;
 using std::pair;
 using std::cout;
 using std::endl;
@@ -32,10 +35,14 @@ public:
     bool deleteEdge(int, int);
     bool deleteVertex(int);
     void clearGraph();
+    void depthFirst(int);
+    void breadthFirst(int);
     vector<Vertex> vertexList;
 
 private:
     bool vertexExists(int);
+    void depthFirst(int, bool[]);
+    void breadthFirst(int, bool[]);
 };
 
 #endif /* GRAPH_GRAPH_H */
