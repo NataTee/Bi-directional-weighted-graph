@@ -23,7 +23,7 @@ using std::endl;
 class Graph {
 
 public:
-    Graph();
+    ~Graph();
 
     bool addVertex(int, string*);
     bool addEdge(int, pair<int,int>);
@@ -31,6 +31,7 @@ public:
     bool edgeExists(int, int);
     bool deleteEdge(int, int);
     bool deleteVertex(int);
+    void clearGraph();
     vector<Vertex> vertexList;
 
 private:
