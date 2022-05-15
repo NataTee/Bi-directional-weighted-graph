@@ -9,8 +9,8 @@ File: graph.cpp
 
 #include "graph.h"
 
-Graph::Graph() {
-
+Graph::~Graph() {
+    clearGraph();
 }
 
 bool Graph::addVertex(int id, string *name) {
@@ -118,5 +118,13 @@ void Graph::printGraph() {
             cout << endl;
         }
     }
+    return;
+}
+
+void Graph::clearGraph() {
+    for (int i = 0; i < vertexList.size(); i++) {
+          vertexList[i].edgeList.clear();
+    }
+    vertexList.clear();
     return;
 }
