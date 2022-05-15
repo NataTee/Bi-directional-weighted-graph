@@ -13,11 +13,13 @@ File: graph.h
 #include <iostream>     /* cout, endl */
 #include <string>
 #include <vector>
+#include <list>
 
 #define MAXVECTSIZE 12
 
 using std::string;
 using std::vector;
+using std::list;
 using std::distance;
 using std::pair;
 using std::cout;
