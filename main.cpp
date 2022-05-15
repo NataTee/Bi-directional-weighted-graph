@@ -81,6 +81,22 @@ int main(int argc, char** argv) {
      cout << "==============================================" << endl;
      graph.printGraph();
 
+     /*
+     *  DFS and BFS traversals
+     */
+     cout << "\nDepth-First Traversal" << endl;
+     cout << "==============================================" << endl;
+     int fVert = rand()%(TESTDATA1 + TESTDATA2);
+     cout << "Starting at the vertex " << fVert << "... " << endl;
+     graph.depthFirst(fVert);
+     cout << endl;
+
+     cout << "\nBreadth-First Traversal" << endl;
+     cout << "==============================================" << endl;
+     graph.breadthFirst();
+     cout << endl;
+
+
      cout << "\nChecking if random vertices are neighbours" << endl;
      cout << "==============================================" << endl;
      for (int i = 0; i < TESTDATA1/2; i++) {
@@ -123,6 +139,21 @@ int main(int argc, char** argv) {
      cout << "==============================================" << endl;
      graph.printGraph();
 
+     /*
+     *  DFS and BFS traversals
+     */
+     cout << "\nDepth-First Traversal" << endl;
+     cout << "==============================================" << endl;
+     //int fVert = rand()%(TESTDATA1 + TESTDATA2);
+     cout << "Starting at the vertex " << fVert << "... " << endl;
+     graph.depthFirst(fVert);
+     cout << endl;
+
+     cout << "\nBreadth-First Traversal" << endl;
+     cout << "==============================================" << endl;
+     graph.breadthFirst();
+     cout << endl;
+
 
      /*
      *  delete vertices and edges
@@ -160,8 +191,32 @@ int main(int argc, char** argv) {
      cout << "==============================================" << endl;
      graph.printGraph();
 
+
+     /*
+     *  delete vertices
+     */
+     cout << "\nDeleting more vertices" << endl;
+     cout << "==============================================" << endl;
+     for (int i = 0; i < TESTDATA2; i++) {
+        int delVert = rand()%(TESTDATA1 + TESTDATA2);
+        cout << "Deleting the vertex " << delVert << "... ";
+        if (graph.deleteVertex(delVert)) {
+         cout << "vertex and all its edges deleted." << endl;
+        }
+        else {
+         cout << "NOT deleted." << endl;
+       }
+     }
+
+     cout << "\nChecking the Graph" << endl;
+     cout << "==============================================" << endl;
+     graph.printGraph();
+
+     cout << "\nClearing the Graph" << endl;
+     cout << "==============================================" << endl;
      graph.clearGraph();
      graph.printGraph();
+
      cout << endl;
      return 0;
 }
