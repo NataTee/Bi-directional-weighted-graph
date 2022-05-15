@@ -25,6 +25,14 @@ int main(int argc, char** argv) {
                               {3,{4,239}}, {3,{6,85}},
                               {4,{5,32}}
                               };
+    string names2[TESTDATA2] = {"San Angelo", "Big Spring", "Midland", "Fort Stockton"};
+    vector<pair<int, pair<int,int>>> edges2 = {
+                              {0,{8,205}},
+                              {5,{8,227}},
+                              {8,{9,87}}, {8,{10,112}},
+                              {9,{10,40}},
+                              {10,{11,105}}
+                              };
 
     /*
     *  make and display graph
@@ -87,14 +95,43 @@ int main(int argc, char** argv) {
         }
      }
 
+     cout << "\nAdding more vertices" << endl;
+     cout << "==============================================" << endl;
+     for (int i = 0; i < TESTDATA2; i++) {
+         cout << "Adding " << TESTDATA1 + i << ": " << names2[i] << "...";
+         if (graph.addVertex((TESTDATA1 + i), &names2[i])) {
+             cout << "added." << endl;
+         }
+         else {
+             cout << "not added." << endl;
+         }
+     }
+     cout << "\nAdding more edges" << endl;
+     cout << "==============================================" << endl;
+     for (int i = 0; i < edges2.size(); i++) {
+        cout << "Adding the edge between " << edges2[i].first << " and " <<
+        edges2[i].second.first << " with weight " << edges2[i].second.second << "... ";
+        if (graph.addEdge(edges2[i].first, edges2[i].second)) {
+            cout << "added." << endl;
+        }
+        else {
+            cout << "NOT added." << endl;
+        }
+     }
+
+     cout << "\nChecking the Graph" << endl;
+     cout << "==============================================" << endl;
+     graph.printGraph();
+
+
      /*
      *  delete vertices and edges
      */
      cout << "\nDeleting random edges" << endl;
      cout << "==============================================" << endl;
-     for (int i = 0; i < TESTDATA1/2; i++) {
-        int delEdgeFrom = rand()%TESTDATA1;
-        int delEdgeTo = rand()%(TESTDATA1-1);
+     for (int i = 0; i < TESTDATA2; i++) {
+        int delEdgeFrom = rand()%(TESTDATA1+TESTDATA2);
+        int delEdgeTo = rand()%TESTDATA1;
         cout << "Deleting the edge between " << delEdgeFrom << " and " << delEdgeTo << "... ";
         if (graph.deleteEdge(delEdgeFrom, delEdgeTo)) {
             cout << "deleted." << endl;
@@ -110,7 +147,7 @@ int main(int argc, char** argv) {
 
      cout << "\nDeleting random vertex" << endl;
      cout << "==============================================" << endl;
-     int delVert = rand()%TESTDATA1;
+     int delVert = rand()%(TESTDATA1 + TESTDATA2);
      cout << "Deleting the vertex " << delVert << "... ";
      if (graph.deleteVertex(delVert)) {
          cout << "vertex and all its edges deleted." << endl;
@@ -123,6 +160,8 @@ int main(int argc, char** argv) {
      cout << "==============================================" << endl;
      graph.printGraph();
 
+     graph.clearGraph();
+     graph.printGraph();
      cout << endl;
      return 0;
 }
