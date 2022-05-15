@@ -17,6 +17,7 @@ File: main.h
 #include "graph.h"
 
 #define TESTDATA1 8
+#define TESTDATA2 4
 
 using std::cout;
 using std::endl;
