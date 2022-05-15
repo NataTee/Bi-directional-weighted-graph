@@ -121,6 +121,31 @@ void Graph::printGraph() {
     return;
 }
 
+void Graph::depthFirst(int fVert) {
+    bool *visited = new bool[MAXVECTSIZE-1];
+    for (int i = 0; i < (MAXVECTSIZE-1); i++) {
+        visited[i] = false;
+    }
+    depthFirst(fVert, visited);
+}
+
+void Graph::depthFirst(int vert, bool visited[]) {
+    visited[vert] = true;
+    cout << vert << " ";
+
+    for (auto i = vertexList.at(vert).edgeList.begin(); i != vertexList.at(vert).edgeList.end(); i++) {
+        if (visited[i->destinationVertexID] != true) {
+            depthFirst(i->destinationVertexID, visited);
+        }
+    }
+    return;
+}
+
+void Graph::breadthFirst(int fVert) {
+
+    return;
+}
+
 void Graph::clearGraph() {
     for (int i = 0; i < vertexList.size(); i++) {
           vertexList[i].edgeList.clear();
