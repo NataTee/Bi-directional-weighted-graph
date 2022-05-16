@@ -86,7 +86,7 @@ int main(int argc, char** argv) {
      */
      cout << "\nDepth-First Traversal" << endl;
      cout << "==============================================" << endl;
-     int fVert = rand()%(TESTDATA1 + TESTDATA2);
+     int fVert = rand()%(TESTDATA1);
      cout << "Starting at the vertex " << fVert << "... " << endl;
      graph.depthFirst(fVert);
      cout << endl;
@@ -102,9 +102,10 @@ int main(int argc, char** argv) {
      for (int i = 0; i < TESTDATA1/2; i++) {
         int vert1 = rand()%TESTDATA1;
         int vert2 = rand()%(TESTDATA1-1);
-        cout << "Checking vertices " << vert1 << " and " << vert2 << "... ";
+        cout << "Checking vertices " << vert1 << ": " << names1[vert1]<< " and "
+        << vert2 << ": " << names1[vert2] <<"... ";
         if (graph.edgeExists(vert1, vert2)) {
-            cout << "neighbours." << endl;
+            cout << "neighbours with weight " << graph.getWeight(vert1, vert2) << endl;
         }
         else {
             cout << "NOT neighbours." << endl;
@@ -144,14 +145,14 @@ int main(int argc, char** argv) {
      */
      cout << "\nDepth-First Traversal" << endl;
      cout << "==============================================" << endl;
-     //int fVert = rand()%(TESTDATA1 + TESTDATA2);
-     cout << "Starting at the vertex " << fVert << "... " << endl;
-     graph.depthFirst(fVert);
+     int fVert1 = rand()%(TESTDATA1 + TESTDATA2);
+     cout << "Starting at the vertex " << fVert1 << "... " << endl;
+     graph.depthFirst(fVert1);
      cout << endl;
 
      cout << "\nBreadth-First Traversal" << endl;
      cout << "==============================================" << endl;
-     graph.breadthFirst(fVert);
+     graph.breadthFirst(fVert1);
      cout << endl;
 
 
