@@ -73,6 +73,18 @@ bool Graph::edgeExists(int from, int to) {
     return found;
 }
 
+int Graph::getWeight(int from, int to) {
+    int weight;
+    if (edgeExists(from, to )) {
+        for (auto i = vertexList.at(from).edgeList.begin(); i < vertexList.at(from).edgeList.end(); i++) {
+            if (i->destinationVertexID == to) {
+                weight = i->weight;
+            }
+        }
+    }
+    return weight;
+}
+
 bool Graph::deleteEdge(int from, int to) {
     bool deleted = false;
     if (edgeExists(from, to)) {
